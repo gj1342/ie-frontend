@@ -1,4 +1,4 @@
-import type { ApiOption, FilterData, IdeaResponse } from '~/types/api';
+import type { ApiOption, FilterData, IdeaResponse, IdeaGenerateResponse } from '~/types/api';
 
 const API_BASE_URL = 'https://ie-backend-production.up.railway.app/api/v1';
 
@@ -14,7 +14,17 @@ class ApiService {
     });
     
     if (!response.ok) {
-      throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+      let details = '';
+      try {
+        const err = await response.json();
+        if (err?.message) details = ` - ${err.message}`;
+      } catch {
+        try {
+          const text = await response.text();
+          if (text) details = ` - ${text}`;
+        } catch {}
+      }
+      throw new Error(`API request failed: ${response.status} ${response.statusText}${details}`);
     }
     
     const result = await response.json();
@@ -34,10 +44,20 @@ class ApiService {
     return this.request<ApiOption[]>('/project-types');
   }
 
-  async generateIdea(filters: FilterData): Promise<IdeaResponse> {
-    return this.request<IdeaResponse>('/ideas/generate', {
+  async generateIdea(filters: FilterData): Promise<IdeaGenerateResponse> {
+    const normalizedComplexity = (filters.complexity === 'expert' ? 'advanced' : filters.complexity);
+    const payload = {
+      industry: filters.industry,
+      projectType: filters.projectType,
+      complexity: normalizedComplexity,
+      userInterests: filters.userInterest
+        ? filters.userInterest.split(',').map(s => s.trim()).filter(Boolean)
+        : undefined,
+    };
+
+    return this.request<IdeaGenerateResponse>('/ideas/generate', {
       method: 'POST',
-      body: JSON.stringify(filters),
+      body: JSON.stringify(payload),
     });
   }
 }

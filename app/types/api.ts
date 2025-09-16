@@ -27,3 +27,8 @@ export interface IdeaResponse {
   challenges: string[];
   estimatedDuration: string;
 }
+
+export interface IdeaGenerateResponse {
+  idea: IdeaResponse;
+  generatedAt: string;
+}

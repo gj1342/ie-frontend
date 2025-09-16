@@ -26,8 +26,8 @@ export function useProjectTypes(): UseProjectTypesReturn {
       setError(null);
       
       const data: any[] = await apiService.getProjectTypes();
-      const options = data.map((item, index) => ({
-        value: item._id || `project-type-${index}`,
+      const options = data.map((item) => ({
+        value: item.name,
         label: item.name
       }));
       
