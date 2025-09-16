@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Fredoka:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:ital,opsz,wght@0,14..144,100..1000;1,14..144,100..1000&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,6 +8,24 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-aboreto: "Aboreto", cursive;
+  --font-family-aboreto: var(--font-aboreto);
+  --font-afacad-flux: "Afacad Flux", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-aboreto {
+  font-family: "Aboreto", "Fredoka", "Brush Script MT", "Lucida Handwriting", cursive;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-style: normal;
+  font-variant: normal;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.font-afacad-flux {
+  font-family: var(--font-afacad-flux);
 }
 
 html,
