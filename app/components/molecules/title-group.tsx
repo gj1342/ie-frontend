@@ -8,27 +8,27 @@ interface TitleGroupProps {
 
 export function TitleGroup({ title, subtitle, creator }: TitleGroupProps) {
   return (
-    <header className="flex flex-col items-center gap-4">
+    <header className="flex flex-col items-center gap-3 px-4">
       <Text
         as="h1"
         variant="primary"
-        size="6xl"
-        className="font-aboreto text-center"
+        size="4xl"
+        className="font-aboreto text-center sm:text-5xl md:text-6xl leading-tight"
       >
         {title}
       </Text>
       <Text
         variant="secondary"
-        size="xl"
-        className="text-center"
+        size="base"
+        className="text-center sm:text-lg md:text-xl"
       >
         {subtitle}
       </Text>
       <Text
         variant="caption"
-        size="sm"
+        size="xs"
         weight="bold"
-        className="text-center"
+        className="text-center sm:text-sm"
       >
         {creator}
       </Text>
