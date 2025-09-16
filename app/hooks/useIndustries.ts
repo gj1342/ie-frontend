@@ -26,8 +26,8 @@ export function useIndustries(): UseIndustriesReturn {
       setError(null);
       
       const data: any[] = await apiService.getIndustries();
-      const options = data.map((item, index) => ({
-        value: item._id || `industry-${index}`,
+      const options = data.map((item) => ({
+        value: item.name,
         label: item.name
       }));
       

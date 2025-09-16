@@ -16,7 +16,7 @@ interface SelectOption {
 interface SelectFieldProps {
   label: string;
   value: string;
-  options: SelectOption[];
+  options: ReadonlyArray<SelectOption>;
   onValueChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;

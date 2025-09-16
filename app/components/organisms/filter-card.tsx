@@ -51,7 +51,11 @@ export function FilterCard({ onGenerate, isLoading = false }: FilterCardProps) {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 
-  const isFormValid = filters.industry && filters.projectType && !loadingIndustries && !loadingProjectTypes;
+  const isFormValid =
+    filters.industry &&
+    filters.projectType &&
+    !loadingIndustries &&
+    !loadingProjectTypes;
 
   return (
     <Card className="w-full max-w-sm">
