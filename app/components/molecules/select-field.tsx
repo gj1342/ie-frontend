@@ -48,9 +48,11 @@ export function SelectField({
           <Button
             variant="outline"
             role="combobox"
-            className="w-full justify-between"
+            className="w-full justify-between overflow-hidden"
           >
-            {selectedOption ? selectedOption.label : placeholder}
+            <span className="truncate text-left">
+              {selectedOption ? selectedOption.label : placeholder}
+            </span>
             <ChevronDownIcon className="h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </DropdownMenuTrigger>
@@ -61,7 +63,9 @@ export function SelectField({
               onClick={() => onValueChange(option.value)}
               className="cursor-pointer"
             >
-              {option.label}
+              <span className="whitespace-normal break-words">
+                {option.label}
+              </span>
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
