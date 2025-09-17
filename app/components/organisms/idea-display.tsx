@@ -119,6 +119,19 @@ export function IdeaDisplay({ idea, loading = false, error = null }: IdeaDisplay
             ))}
           </ul>
         </Section>
+
+        <Section title="Technologies">
+          <div className="flex flex-wrap gap-2">
+            {idea.technologies.map((technology, index) => (
+              <span
+                key={index}
+                className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20"
+              >
+                {technology}
+              </span>
+            ))}
+          </div>
+        </Section>
       </CardContent>
     </Card>
   );
