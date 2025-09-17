@@ -25,6 +25,7 @@ export interface IdeaResponse {
   features: string[];
   objectives: string[];
   challenges: string[];
+  technologies: string[];
   estimatedDuration: string;
 }
 
